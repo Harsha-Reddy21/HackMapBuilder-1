@@ -1,0 +1,191 @@
+Alright! Based on your description for HackMap – Hackathon Discovery & Team Builder, here’s a clear feature breakdown and tech plan you can start with:
+
+HackMap – High-Level Plan
+1. 🔐 Authentication & Authorization
+Email/password signup/login (basic auth)
+
+JWT Tokens for session management (optional: refresh tokens)
+
+OAuth (optional later: Google/GitHub login)
+
+Access Control:
+
+Logged-in users can:
+
+Register for hackathons
+
+Create or join teams
+
+Post project ideas
+
+Comment or endorse
+
+2. 🧱 Core Modules
+a) Hackathon Listings
+Fields:
+
+Title
+
+Theme
+
+Start Date, End Date
+
+Registration Deadline
+
+Prizes
+
+Tags (AI, Web3, Healthcare, etc.)
+
+Actions:
+
+Organizer can post events
+
+Public browsing for all users
+
+b) Registration & Profile
+User Profile:
+
+Bio
+
+Skills (tags or multi-select list)
+
+Github/Portfolio links
+
+Hackathon Registration:
+
+Select hackathons to register for
+
+Can only form/join teams after registration
+
+c) Team Formation (IMPORTANT MODULE)
+Create Team:
+
+Team Name
+
+Team Description
+
+Skill Tags
+
+Join Team:
+
+By Invitation Code
+
+By Username Invitation
+
+Team Size Limits:
+
+Per hackathon, e.g., 2-5 members
+
+Skill-based Matchmaking:
+
+Suggest teams missing specific skills based on profile
+
+Suggest members if a team has gaps
+
+Manage Invites:
+
+Accept/Decline invites from dashboard/email
+
+d) Project Idea Board
+Fields for Teams:
+
+Project Title
+
+Short Summary
+
+Tech Stack (tags)
+
+Interactions:
+
+Comments
+
+Endorsements (like a "thumbs up" or vote)
+
+Visibility:
+
+Only registered teams can post
+
+Other users can view/comment
+
+e) Dashboard & Notifications
+Personal Dashboard:
+
+Registered Hackathons list
+
+Current team status (pending/joined/invite)
+
+Project ideas posted
+
+Notifications:
+
+Team invites
+
+New team member join request
+
+Hackathon deadlines
+
+Email Alerts:
+
+New invite
+
+Team member accepted
+
+Registration deadline reminders
+
+📦 Tech Stack (suggestion)
+Frontend	Backend	Database	Auth	Deployment
+React.js / Next.js	Node.js (Express) / FastAPI	PostgreSQL / MongoDB	JWT + bcrypt	Vercel / AWS / Railway
+
+Optionally, use Socket.io for live updates on team invites/matching!
+
+🛠️ Minimal Database Tables (Sample)
+User
+
+id, name, email, password, bio, skills, links
+
+Hackathon
+
+id, title, theme, start_date, end_date, deadline, prizes, tags
+
+Registration
+
+id, user_id, hackathon_id
+
+Team
+
+id, name, description, hackathon_id, creator_id
+
+TeamMember
+
+id, team_id, user_id, status (invited/accepted)
+
+ProjectIdea
+
+id, team_id, title, summary, tech_stack
+
+Comments
+
+id, project_id, user_id, comment
+
+Endorsements
+
+id, project_id, user_id
+
+🔥 MVP Milestones
+Stage	Deliverable
+1	Email Auth (Login/Signup)
+2	Hackathon Listings Page
+3	Hackathon Registration + Profile
+4	Team Creation + Joining
+5	Project Idea Board
+6	Dashboards + Notifications
+
+🎯 Extra ideas (after MVP)
+Real-time chat for teams
+
+Public Hackathon Leaderboards
+
+Portfolio generator (users show off past hackathons)
+
+API access for organizers (post/manage events easily)
+
